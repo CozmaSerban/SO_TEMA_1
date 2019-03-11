@@ -1,0 +1,93 @@
+Nume: Cozma Daniel Serban	
+Grupă: 334AA
+
+Tema 1 Multi-platform Development
+
+Organizare
+-
+1. Explicație pentru structura creată (sau soluția de ansamblu aleasă):
+
+Am verificat la inceput sa vad daca aveam un fisier ca si input sau era STDIN 
+if (argc == 1) {
+	....
+}
+
+for (i = 0; i < argc - 1; i++) {
+		f = fopen(argv[i + 1], "r");
+		if (f == NULL)
+			continue;
+		.....		
+}
+
+Apoi citeam linie cu linie cu fgets si verificam daca e una din comenzile permise excluzand comenzile eronate si randurile goale.
+Foloseam o functie sa vad cate cuvinte sunt pentru o comanda de insert ca mai erau comenzi eronate de tipul acela.
+
+int
+words(const char *sentence)
+{
+	......
+	return count;
+}
+
+
+In functie de comanda apelam functia cu parametrii necesari si afisam pe ecran rezultatul.
+
+if (strstr(line, "top") != NULL &&
+					strlen(line) == 4) {
+				strcpy(nume, top(&front, &rear));
+				if (strcmp(nume, "") != 0)
+					printf("%s\n", nume);
+				else
+					putchar(nl);
+}
+
+
+Si la finalul aplicatiei curatam memoria.
+
+front1 = front;
+	while (front1 != NULL) {
+		front1 = front1->ptr;
+		free(front->info.name);
+		free(front);
+		front = front1;
+}
+
+Tema a fosa de stul de utila si misto ca am vazut cum este sa folosesti Dr. Memory, am facut un Makefile pentru WINDOWS. Si super interesant a fast ca am mazut cum este coding-style-ul pentru kernel.
+
+Am avut o implementare multumitoare. Mereu este loc de mai bine dar a mers destul de repede sa o fac fara prea multe impedimente.
+
+
+Implementare
+-
+
+* De specificat dacă întregul enunț al temei e implementat
+* Dacă există funcționalități extra, pe lângă cele din enunț - descriere succintă (maximum 3-4 rânduri/funcționalitate) + motivarea lor (maximum o frază)
+* De specificat funcționalitățile lipsă din enunț (dacă există) și menționat dacă testele reflectă sau nu acest lucru
+* Dificultăți întâmpinate
+* Lucruri interesante descoperite pe parcurs
+
+
+Consider ca am implementation intregul continut al temei.
+Am avut niste probleme pe VM de Windows ca imi zicea pe local ca nu imi merge niciun memcheck si totusi cand am urcat pe vmchecker totul este perfect. Pe Dr. Memory in versiunea care era
+instalata pe VM nu poti sa vedi acolo unde ai probleme de memorie unde anume sunt in codul tau.
+
+
+Cum se compilează și cum se rulează?
+-
+
+In makefile-ul de Linux compilez .c-ul si ahoi fisierul obiect il linkez cu libcompare.so si eisen executabilul tema1.
+Executabilul se ruleaza cu argumente dar si fara (ca poti poi sa ii scrivi din STDIN);
+
+Pe aceelasi principiu functioneaza si Makefilul pe Windows doar ca era alta sintaxa in makefile.
+
+
+Bibliografie
+-
+
+Laboratoare de SO, www.cplusplus.com (sa vad cum era definite functiile)
+
+
+Git
+-
+1. Link către repo-ul de git
+https://github.com/CozmaSerban/SO_TEMA_1
